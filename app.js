@@ -44,6 +44,4 @@ app.get('/', (req, res) => {
     res.send('Spotify Callback Middle Man is running!');
 });
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+module.exports = app;
