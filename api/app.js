@@ -7,6 +7,11 @@ const port = process.env.PORT || 3000; // Platform adja a PORT-ot
 const APP_SCHEME = 'spotifyjournalauth';
 const APP_CALLBACK_PATH = 'callback'; // Vagy amit használsz
 
+app.get('/hello', (req, res) => {
+    res.send('Hello World!');
+}
+);
+
 app.get('/spotify-callback', (req, res) => {
     const code = req.query.code;
     const state = req.query.state;
