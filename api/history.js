@@ -5,7 +5,7 @@
 //          lekérdezi a felhasználóhoz tartozó előzményeket a DB-ből (Neon).
 
 const axios = require('axios');
-const db = require('../../db');
+const db = require('../db');
 require('dotenv').config({ path: '../../.env' });
 
 const SPOTIFY_ME_URL = 'https://api.spotify.com/v1/me';
