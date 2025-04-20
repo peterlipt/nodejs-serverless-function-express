@@ -18,7 +18,8 @@ const APP_CALLBACK_PATH = 'callback';
 const handleExchangeCode = require('./api/auth/exchange-code');
 const handleRefreshToken = require('./api/auth/refresh');
 const handleFetchHistory = require('./api/history'); // Feltételezve, hogy ez is külön fájlban van
-const handleCronFetch = require('./api/cron/fetch_recent_plays'); // Cron job handler
+const handleCronFetch = require('./api/cron/fetch_recent_plays');
+const runFetchRecentPlays = require("./api/cron/fetch_recent_plays"); // Cron job handler
 
 // --- Útvonalak ---
 
@@ -75,11 +76,7 @@ app.get('/', (req, res) => {
 // const cronRouter = require('./api/cron/fetch_recent_plays');
 // app.use('/api/cron', cronRouter); // Ha a fájl egy routert exportál
 // Vagy ha csak egy GET végpont:
-app.get('/api/cron/fetch_recent_plays', handleCronFetch); // Ha a fájl a handlert exportálja
-
-
-// --- Régi /api/users/register TÖRLÉSE ---
-// app.post('/api/users/register', async (req, res) => { ... }); // EZT TÖRÖLD!
+app.get('/api/cron/fetch_recent_plays', runFetchRecentPlays); // Ha a fájl a handlert exportálja
 
 
 // --- Vercel Export ---

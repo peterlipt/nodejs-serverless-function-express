@@ -17,14 +17,6 @@ const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const SPOTIFY_RECENTLY_PLAYED_URL = 'https://api.spotify.com/v1/me/player/recently-played';
 
-// Ha az app.js-ből hívjuk meg require-rel:
-module.exports = (app) => {
-    app.get('/api/cron/fetch_recent_plays', async (req, res) => {
-        // Itt jön a teljes cron job logika...
-        await runFetchRecentPlays(req, res);
-    });
-};
-
 // A fő cron job logika
 async function runFetchRecentPlays(req, res) {
     // Opcionális: Cron Secret ellenőrzése
@@ -221,5 +213,4 @@ async function runFetchRecentPlays(req, res) {
     }
 }
 
-// Ha ezt a fájlt közvetlenül futtatná Vercel (pl. api/cron/fetch.js néven):
-// module.exports = runFetchRecentPlays;
+module.exports = runFetchRecentPlays;
